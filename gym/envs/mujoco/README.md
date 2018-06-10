@@ -16,3 +16,5 @@
   * 3: distance between fingertip and target (3D cartesian)
 * ? why set: reward_threshold=-3.75? instead of `=0`?
   is it sort of tolerance?
+* diff seed make diff target pose,
+  and init jointpos, which is random in [-0.1, +0.1) rad (~5.72 deg)
