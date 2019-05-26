@@ -160,7 +160,7 @@ register(
     entry_point='gym.envs.toy_text:FrozenLakeModifiedEnv',
     kwargs={'map_name' : '4x4'},
     max_episode_steps=100,
-    reward_threshold=0.78, # optimum = .8196
+    reward_threshold=-14.589,
 )
 
 register(
