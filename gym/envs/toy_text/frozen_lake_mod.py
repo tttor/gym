@@ -100,7 +100,7 @@ class FrozenLakeModifiedEnv(discrete.DiscreteEnv):
 
     metadata = {'render.modes': ['human', 'ansi']}
 
-    def __init__(self, desc=None, map_name="4x4",is_slippery=True):
+    def __init__(self, desc, map_name, is_slippery, goalreward_weighting, holereward_weighting):
         if desc is None and map_name is None:
             desc = generate_random_map()
         elif desc is None:
@@ -138,7 +138,26 @@ class FrozenLakeModifiedEnv(discrete.DiscreteEnv):
                     if letter == b'G':
                         return np.asarray((row, col))
 
+        def get_start_coord():
+            for row in range(nrow):
+                for col in range(ncol):
+                    letter = desc[row, col]
+                    if letter == b'S':
+                        return np.asarray((row, col))
+
         goal_coord = get_goal_coord()
+        start_coord = get_start_coord()
+        startgoal_dist = np.linalg.norm(goal_coord - start_coord)
+
+        if goalreward_weighting:
+            goalreward_weight = startgoal_dist
+        else:
+            goalreward_weight = 1.0
+
+        if holereward_weighting:
+            holereward_weight = - startgoal_dist
+        else:
+            holereward_weight = 0.0 # because originally, there is NO hole reward
 
         for row in range(nrow):
             for col in range(ncol):
@@ -155,9 +174,10 @@ class FrozenLakeModifiedEnv(discrete.DiscreteEnv):
                                 newstate = to_s(newrow, newcol)
                                 newletter = desc[newrow, newcol]
                                 newpos = np.asarray((newrow, newcol))
-                                rew_goal = float(newletter == b'G')
+                                rew_goal = float(newletter == b'G')*goalreward_weight
+                                rew_hole = float(newletter == b'H')*holereward_weight
                                 rew_dist = - np.linalg.norm(goal_coord - newpos)
-                                rew = rew_dist + rew_goal
+                                rew = rew_dist + rew_goal + rew_hole
                                 done = bytes(newletter) in b'GH'
                                 li.append((1.0/3.0, newstate, rew, done))
                         else:
