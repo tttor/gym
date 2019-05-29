@@ -158,9 +158,17 @@ register(
 register(
     id='FrozenLakeMod-v0',
     entry_point='gym.envs.toy_text:FrozenLakeModifiedEnv',
-    kwargs={'map_name' : '4x4'},
+    kwargs={'map_name' : '4x4', 'goalreward_weighting': False, 'holereward_weighting': False, 'desc': None, 'is_slippery': True},
     max_episode_steps=100,
     reward_threshold=-14.589,
+)
+
+register(
+    id='FrozenLakeMod-v1',
+    entry_point='gym.envs.toy_text:FrozenLakeModifiedEnv',
+    kwargs={'map_name' : '4x4', 'goalreward_weighting': True, 'holereward_weighting': True, 'desc': None, 'is_slippery': True},
+    max_episode_steps=100,
+    reward_threshold=None,
 )
 
 register(
