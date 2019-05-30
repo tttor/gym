@@ -108,7 +108,7 @@ class FrozenLakeModifiedEnv(discrete.DiscreteEnv):
         self.desc = desc = np.asarray(desc,dtype='c')
         self.nrow, self.ncol = nrow, ncol = desc.shape
         self.map_arrayorder = 'C'
-        self.reward_range = (0, 1)
+        self.reward_range = None
 
         nA = 4
         nS = nrow * ncol
