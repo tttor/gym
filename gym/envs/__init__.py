@@ -180,6 +180,22 @@ register(
 )
 
 register(
+    id='FrozenLakeMod8x8-v0',
+    entry_point='gym.envs.toy_text:FrozenLakeModifiedEnv',
+    kwargs={'map_name' : '8x8', 'goalreward_weighting': False, 'holereward_weighting': False, 'desc': None, 'is_slippery': True},
+    max_episode_steps=200,
+    reward_threshold=None,
+)
+
+register(
+    id='FrozenLakeMod8x8-v1',
+    entry_point='gym.envs.toy_text:FrozenLakeModifiedEnv',
+    kwargs={'map_name' : '8x8', 'goalreward_weighting': True, 'holereward_weighting': True, 'desc': None, 'is_slippery': True},
+    max_episode_steps=200,
+    reward_threshold=None,
+)
+
+register(
     id='CliffWalking-v0',
     entry_point='gym.envs.toy_text:CliffWalkingEnv',
 )
