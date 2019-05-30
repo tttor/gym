@@ -168,7 +168,7 @@ register(
     entry_point='gym.envs.toy_text:FrozenLakeModifiedEnv',
     kwargs={'map_name' : '4x4', 'goalreward_weighting': True, 'holereward_weighting': True, 'desc': None, 'is_slippery': True},
     max_episode_steps=100,
-    reward_threshold=None,
+    reward_threshold=-18.596,
 )
 
 register(
