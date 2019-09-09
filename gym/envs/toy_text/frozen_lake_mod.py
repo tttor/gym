@@ -19,6 +19,12 @@ MAPS = {
         "FFFH",
         "HFFG"
     ],
+    "4x4_nohole": [
+        "SFFF",
+        "FFFF",
+        "FFFF",
+        "FFFG"
+    ],
     "8x8": [
         "SFFFFFFF",
         "FFFFFFFF",
@@ -28,6 +34,16 @@ MAPS = {
         "FHHFFFHF",
         "FHFFHFHF",
         "FFFHFFFG"
+    ],
+    "8x8_nohole": [
+        "SFFFFFFF",
+        "FFFFFFFF",
+        "FFFFFFFF",
+        "FFFFFFFF",
+        "FFFFFFFF",
+        "FFFFFFFF",
+        "FFFFFFFF",
+        "FFFFFFFG"
     ],
 }
 
